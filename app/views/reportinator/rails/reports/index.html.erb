@@ -1,0 +1,6 @@
+<h1>Reportinator</h1>
+<table>
+  <% Reportinator::Rails::Report.list.each do |template| %>
+    <%= render partial: "report", locals: { template: template }%>
+  <% end %>
+</table>

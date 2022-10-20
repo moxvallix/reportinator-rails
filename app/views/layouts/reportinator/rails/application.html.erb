@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reportinator rails</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "reportinator/rails/tailwind", "data-turbo-track": "reload" %>
+  </head>
+  <body>
+    <main class="flex flex-col items-center">
+      <div class="max-w-screen-lg w-full p-2">
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+</html>

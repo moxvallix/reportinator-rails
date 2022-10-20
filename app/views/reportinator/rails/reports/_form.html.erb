@@ -1,0 +1,25 @@
+<% inputs = report.metadata[:inputs] %>
+<% if inputs.is_a? Hash %>
+  <div>
+    <%= form_with(scope: report, url: report_update_path, method: :put, html: { class: "flex gap-2 items-end" }) do |form| %>
+      <% inputs.each do |variable, info| %>
+        <% type = info[:type] %>
+        <% case type %>
+        <% when :date then partial = "partials/forms/date" %>
+        <% when :string then partial = "partials/forms/string" %>
+        <% when :number then partial = "partials/forms/number" %>
+        <% end %>
+        <% if partial.present? %>
+          <% value = info[:default] %>
+          <% if @variables.present? && @variables[variable].present? %>
+            <% value = @variables[variable] %>
+          <% end %>
+          <%= render partial: partial, locals: { form: form, id: variable, default: value } %>
+        <% end %>
+      <% end %>
+      <div>
+        <%= form.submit "Run", class: "form-submit" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

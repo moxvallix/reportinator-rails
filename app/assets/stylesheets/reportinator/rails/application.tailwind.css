@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-2xl font-bold;
+  }
+}
+
+@layer components {
+  .form-input {
+    @apply shadow rounded-md border border-gray-200 outline-none w-full;
+  }
+
+  .form-submit {
+    @apply shadow rounded-md border border-gray-200 outline-none w-full px-6 py-2 cursor-pointer hover:bg-gray-200;
+  }
+}

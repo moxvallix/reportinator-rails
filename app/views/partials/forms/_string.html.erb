@@ -1,0 +1,5 @@
+<% name = id.to_s.titleize %>
+<div>
+  <%= form.label id, value: name %>
+  <%= form.text_field id, value: default, class: "form-input" %>
+</div>

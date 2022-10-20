@@ -1,0 +1,5 @@
+<table class="prose max-w-none">
+  <% @report.rows.each do |row| %>
+    <%= render partial: "partials/row", locals: { columns: row.columns } %>
+  <% end %>
+</table>

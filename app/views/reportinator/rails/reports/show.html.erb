@@ -1,0 +1,9 @@
+<h1>
+  <%= link_to "Reportinator", root_path %>
+  >
+  <%= params[:id].titleize %>
+</h1>
+<% if @report.metadata.include? :inputs %>
+  <%= render partial: "form", locals: { report: @report } %>
+<% end %>
+<%= render partial: "table" %>

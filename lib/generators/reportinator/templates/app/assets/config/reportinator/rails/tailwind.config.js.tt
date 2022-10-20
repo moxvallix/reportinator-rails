@@ -1,0 +1,8 @@
+module.exports = {
+  content: [
+    <%= Reportinator::Rails.config.tailwind_content.map{|path|"'#{path}'"}.join(",\n") %>
+  ],
+  plugins: [
+    <%= Reportinator::Rails.config.tailwind_plugins.map {|plugin|"require('#{plugin}')"}.join(",\n\t") %>
+  ]
+}

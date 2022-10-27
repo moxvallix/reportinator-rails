@@ -1,6 +1,10 @@
-<h1>Reportinator</h1>
-<table>
-  <% Reportinator::Rails::Report.list.each do |template| %>
-    <%= render partial: "report", locals: { template: template }%>
-  <% end %>
-</table>
+<div class="flex flex-col w-full items-center justify-center">
+  <div class="max-w-screen-lg md:w-full">
+    <h1>Reportinator</h1>
+    <table class="grow">
+      <% Reportinator::Rails::Report.list.each do |template| %>
+        <%= render partial: "report", locals: { template: template }%>
+      <% end %>
+    </table>
+  </div>
+</div>

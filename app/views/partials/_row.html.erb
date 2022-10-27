@@ -1,5 +1,9 @@
 <tr>
   <% columns.each do |column| %>
-    <td><%= column.output %></td>
+    <% if header %>
+      <th class="px-4 py-2 border-b border-gray-400"><%= simple_format(column.output.to_s) %></th>
+    <% else %>
+      <td class="px-4 py-2 border-b border-gray-300"><%= simple_format(column.output.to_s) %></td>
+    <% end %>
   <% end %>
 </tr>

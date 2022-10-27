@@ -1,7 +1,7 @@
-<% inputs = report.metadata[:inputs] %>
+<% inputs = @metadata[:inputs] %>
 <% if inputs.is_a? Hash %>
   <div>
-    <%= form_with(scope: report, url: report_update_path, method: :put, html: { class: "flex gap-2 items-end" }) do |form| %>
+    <%= form_with(scope: report, url: report_path, method: :get, html: { class: "flex gap-2 items-end" }) do |form| %>
       <% inputs.each do |variable, info| %>
         <% type = info[:type] %>
         <% case type %>

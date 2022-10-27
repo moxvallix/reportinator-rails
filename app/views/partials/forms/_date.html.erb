@@ -1,5 +1,6 @@
 <% name = id.to_s.titleize %>
+<% value = default.instance_of?(Time) ? default.strftime("%Y-%m-%d") : default %>
 <div>
-  <%= form.label id, value: name %>
-  <%= form.date_field id, value: default, class: "form-input" %>
+  <%= form.label "date_#{id}", value: name %>
+  <%= form.date_field "date_#{id}", value: value, class: "form-input" %>
 </div>

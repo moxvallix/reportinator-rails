@@ -1,9 +1,17 @@
-<h1>
-  <%= link_to "Reportinator", root_path %>
-  >
-  <%= params[:id].titleize %>
-</h1>
-<% if @report.metadata.include? :inputs %>
-  <%= render partial: "form", locals: { report: @report } %>
-<% end %>
-<%= render partial: "table" %>
+<div class="flex flex-col w-full items-center justify-center">
+  <div>
+    <h1>
+      <%= link_to "Reportinator", root_path %> > <%= params[:id].titleize %>
+    </h1>
+
+    <% if @metadata.present? && @metadata.include?(:inputs) %>
+      <%= render partial: "form", locals: { report: @report } %>
+    <% end %>
+
+    <% begin %>
+      <%= render partial: "table" %>
+    <% rescue %>
+      <p>Report Error</p>
+    <% end %>
+  </div>
+</div>

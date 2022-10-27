@@ -5,7 +5,7 @@ require "active_support"
 module Reportinator
   module Rails
     include ActiveSupport::Configurable
-    config_accessor :tailwind_content, :tailwind_plugins
+    config_accessor :tailwind_content, :tailwind_plugins, :input_types
   
     self.tailwind_content = [
       "#{Reportinator::Rails::Engine.root}/app/views/**/*.*",
@@ -16,6 +16,12 @@ module Reportinator
     ]
 
     self.tailwind_plugins = %w[@tailwindcss/forms @tailwindcss/aspect-ratio @tailwindcss/typography]
+
+    self.input_types = [
+      "Reportinator::Rails::DateInput",
+      "Reportinator::Rails::NumberInput",
+      "Reportinator::Rails::StringInput"
+    ]
     # Your code goes here...
   end
 end

@@ -1,3 +1,6 @@
-<div>
-  <a href="<%= root_path %><%= template %>"><%= template %></a>
-</div>
+<% url = "#{root_path}#{template}" %>
+<tr class="hover:bg-gray-100 cursor-pointer" onclick="location.href='<%= url%>';">
+  <td class="px-4 py-2 border-b border-gray-300">
+    <a href="<%= url %>"><%= template %></a>
+  </td>
+</tr>

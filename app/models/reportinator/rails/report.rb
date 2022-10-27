@@ -1,16 +1,18 @@
 module Reportinator
   module Rails
-    class Report < Loader
+    class Report < Base
       attribute :template
 
       def self.list
-        directories = config.configured_directories.map do |dir|
+        templates = config.configured_directories.map do |dir|
           config.configured_suffixes.map { |suffix| Dir["#{dir}/**/*#{suffix}"] }.flatten
         end
-        directories.flatten.uniq.map { |template| template_name(template)}
+        templates = templates.flatten.uniq.map { |template| template_name(template)}
+        templates.select { |template| !File.basename(template).start_with? "_" }
       end
 
       def self.all
+        return [] unless list.present?
         list.map { |template| load(template) }
       end
 
@@ -38,7 +40,7 @@ module Reportinator
       end
 
       def self.load(template, additional_params = {})
-        report_from_template(template, additional_params)
+        ReportLoader.load(template, additional_params)
       end
     end
   end

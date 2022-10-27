@@ -1,5 +1,7 @@
-<table class="prose max-w-none">
-  <% @report.rows.each do |row| %>
-    <%= render partial: "partials/row", locals: { columns: row.columns } %>
+<table class="grow">
+  <% rows = @report.rows %>
+  <% rows.each do |row| %>
+    <% header = (row == rows.first) %>
+    <%= render partial: "partials/row", locals: { columns: row.columns, header: header } %>
   <% end %>
 </table>

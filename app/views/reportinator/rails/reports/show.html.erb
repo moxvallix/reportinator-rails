@@ -9,6 +9,7 @@
     <% end %>
 
     <% begin %>
+      <%= link_to "Download as CSV", download_path(@params) %>
       <%= render partial: "table" %>
     <% rescue %>
       <p>Report Error</p>

@@ -19,9 +19,6 @@ module Reportinator::Rails
       end
     end
 
-    def update
-    end
-
     def download
       variables = get_report_variables(params[:reportinator_report])
       template = params[:template]
@@ -42,9 +39,9 @@ module Reportinator::Rails
         variables = get_report_variables(params[:reportinator_report])
         loader = get_loader(params[:id], variables)
         set_variables(loader)
-      # rescue
-      #   @report = Reportinator::Report.new
-      #   @report.insert(Reportinator::Row.create("Invalid Table"))
+      rescue => e
+        @report = Reportinator::Report.new
+        @report.insert(Reportinator::Row.create("Invalid Table: #{e.to_s}"))
       end
 
       def get_report_variables(inputs)

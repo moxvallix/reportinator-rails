@@ -1,0 +1,8 @@
+<%
+  name = id.to_s.titleize
+  value = params.dig(:reportinator_report, "select_#{id}") || default
+%>
+<div>
+  <%= form.label "select_#{id}", value: name %>
+  <%= form.select "select_#{id}", info[:options], { selected: value }, class: "form-input" %>
+</div>

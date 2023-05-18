@@ -1,5 +1,8 @@
-<% name = id.to_s.titleize %>
+<%
+  name = id.to_s.titleize
+  value = params.dig(:reportinator_report, "number_#{id}") || default
+%>
 <div>
   <%= form.label "number_#{id}", value: name %>
-  <%= form.number_field "number_#{id}", value: default, class: "form-input" %>
+  <%= form.number_field "number_#{id}", value: value, class: "form-input" %>
 </div>

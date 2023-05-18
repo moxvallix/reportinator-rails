@@ -1,5 +1,9 @@
-<% name = id.to_s.titleize %>
-<% value = default.instance_of?(Time) ? default.strftime("%Y-%m-%d") : default %>
+<%
+  name = id.to_s.titleize
+  default_value = default.instance_of?(Time) ? default.strftime("%Y-%m-%d") : default
+  value = params.dig(:reportinator_report, "date_#{id}") || default_value
+%>
+
 <div>
   <%= form.label "date_#{id}", value: name %>
   <%= form.date_field "date_#{id}", value: value, class: "form-input" %>

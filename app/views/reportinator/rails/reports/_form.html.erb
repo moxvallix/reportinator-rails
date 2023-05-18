@@ -1,24 +1,23 @@
-<% inputs = @metadata[:inputs] %>
+<% 
+  inputs = @metadata[:inputs]
+  type_list = Reportinator::Rails::Input.type_list
+%>
 <% if inputs.is_a? Hash %>
   <div>
     <%= form_with(scope: report, url: report_path, method: :get, html: { class: "flex gap-2 items-end" }) do |form| %>
       <% inputs.each do |variable, info| %>
         <% type = info[:type] %>
-        <% case type %>
-        <% when :date then partial = "partials/forms/date" %>
-        <% when :string then partial = "partials/forms/string" %>
-        <% when :number then partial = "partials/forms/number" %>
-        <% end %>
-        <% if partial.present? %>
+        <% if type_list[type].present? %>
+          <% partial = type_list[type]::PARTIAL %>
           <% value = info[:default] %>
           <% if @variables.present? && @variables[variable].present? %>
             <% value = @variables[variable] %>
           <% end %>
-          <%= render partial: partial, locals: { form: form, id: variable, default: value } %>
+          <%= render partial: partial, locals: { form: form, id: variable, default: value, info: info } %>
         <% end %>
       <% end %>
       <div>
-        <%= form.submit "Run", class: "form-submit" %>
+        <%= form.submit "Run", class: "form-submit cursor-pointer" %>
       </div>
     <% end %>
   </div>

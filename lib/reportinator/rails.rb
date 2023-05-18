@@ -20,7 +20,8 @@ module Reportinator
     self.input_types = [
       "Reportinator::Rails::DateInput",
       "Reportinator::Rails::NumberInput",
-      "Reportinator::Rails::StringInput"
+      "Reportinator::Rails::StringInput",
+      "Reportinator::Rails::SelectInput"
     ]
     # Your code goes here...
   end
